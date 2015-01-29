@@ -206,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="-103.125" y="1058.450704225352"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="5Vx-1a-8rw">
             <objects>
-                <viewController id="aev-hv-oIC" sceneMemberID="viewController">
+                <viewController id="aev-hv-oIC" customClass="LoginViewController" customModule="DNApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8A6-v7-6Zi"/>
                         <viewControllerLayoutGuide type="bottom" id="pMP-O0-1zN"/>
@@ -304,6 +304,9 @@
                                                 <real key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButtonDidTouch:" destination="aev-hv-oIC" eventType="touchUpInside" id="kVS-ct-uWM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,6 +351,9 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="dialogView" destination="SKd-PD-wRO" id="Phj-U4-9tT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aod-es-f9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5Sr-9E-H15" userLabel="Exit" sceneMemberID="exit"/>
