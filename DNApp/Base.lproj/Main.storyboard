@@ -218,7 +218,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBk-eO-TW2">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBk-eO-TW2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aig-NV-XL7">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -340,7 +340,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="SKd-PD-wRO" secondAttribute="centerY" id="1rp-1x-5ma"/>
+                            <constraint firstItem="pMP-O0-1zN" firstAttribute="top" secondItem="wBk-eO-TW2" secondAttribute="bottom" id="46u-P7-mlF"/>
                             <constraint firstAttribute="centerX" secondItem="SKd-PD-wRO" secondAttribute="centerX" id="PPf-lx-d9U"/>
+                            <constraint firstItem="wBk-eO-TW2" firstAttribute="top" secondItem="4L4-sd-tbc" secondAttribute="top" id="dar-0s-Cp7"/>
+                            <constraint firstItem="wBk-eO-TW2" firstAttribute="leading" secondItem="4L4-sd-tbc" secondAttribute="leading" id="nxh-Ol-Wcq"/>
+                            <constraint firstAttribute="trailing" secondItem="wBk-eO-TW2" secondAttribute="trailing" id="qay-hS-Flo"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
