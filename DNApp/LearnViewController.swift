@@ -18,26 +18,26 @@ class LearnViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         dialogView.animate()
     }
     
-    @IBAction func learnButtonDidTouch(sender: AnyObject) {
+    @IBAction func learnButtonDidTouch(_ sender: AnyObject) {
         bookImageView.animation = "pop"
         bookImageView.animate()
     }
 
-    @IBAction func closeButtonDidTouch(sender: AnyObject) {
+    @IBAction func closeButtonDidTouch(_ sender: AnyObject) {
         dialogView.animation = "fall"
         dialogView.animateNext {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

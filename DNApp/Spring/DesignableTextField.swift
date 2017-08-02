@@ -1,16 +1,30 @@
+// The MIT License (MIT)
 //
-//  DesignableTextField.swift
-//  3DTransform
+// Copyright (c) 2015 Meng To (meng@designcode.io)
 //
-//  Created by Meng To on 2014-11-27.
-//  Copyright (c) 2014 Meng To. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import UIKit
 
 @IBDesignable public class DesignableTextField: SpringTextField {
     
-    @IBInspectable public var placeholderColor: UIColor = UIColor.clearColor() {
+    @IBInspectable public var placeholderColor: UIColor = UIColor.clear {
         didSet {
             attributedPlaceholder = NSAttributedString(string: placeholder!, attributes: [NSForegroundColorAttributeName: placeholderColor])
             layoutSubviews()
@@ -20,37 +34,37 @@ import UIKit
     
     @IBInspectable public var sidePadding: CGFloat = 0 {
         didSet {
-            var padding = UIView(frame: CGRectMake(0, 0, sidePadding, sidePadding))
+            let padding = UIView(frame: CGRect(x: 0, y: 0, width: sidePadding, height: sidePadding))
             
-            leftViewMode = UITextFieldViewMode.Always
+            leftViewMode = UITextFieldViewMode.always
             leftView = padding
             
-            rightViewMode = UITextFieldViewMode.Always
+            rightViewMode = UITextFieldViewMode.always
             rightView = padding
         }
     }
     
     @IBInspectable public var leftPadding: CGFloat = 0 {
         didSet {
-            var padding = UIView(frame: CGRectMake(0, 0, leftPadding, 0))
+            let padding = UIView(frame: CGRect(x: 0, y: 0, width: leftPadding, height: 0))
             
-            leftViewMode = UITextFieldViewMode.Always
+            leftViewMode = UITextFieldViewMode.always
             leftView = padding
         }
     }
     
     @IBInspectable public var rightPadding: CGFloat = 0 {
         didSet {
-            var padding = UIView(frame: CGRectMake(0, 0, 0, rightPadding))
+            let padding = UIView(frame: CGRect(x: 0, y: 0, width: rightPadding, height: 0))
             
-            rightViewMode = UITextFieldViewMode.Always
+            rightViewMode = UITextFieldViewMode.always
             rightView = padding
         }
     }
     
-    @IBInspectable public var borderColor: UIColor = UIColor.clearColor() {
+    @IBInspectable public var borderColor: UIColor = UIColor.clear {
         didSet {
-            layer.borderColor = borderColor.CGColor
+            layer.borderColor = borderColor.cgColor
         }
     }
     
@@ -68,13 +82,13 @@ import UIKit
    
     @IBInspectable public var lineHeight: CGFloat = 1.5 {
         didSet {
-            var font = UIFont(name: self.font.fontName, size: self.font.pointSize)
-            var text = self.text
+            let font = UIFont(name: self.font!.fontName, size: self.font!.pointSize)
+            let text = self.text
             
-            var paragraphStyle = NSMutableParagraphStyle()
+            let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = lineHeight
             
-            var attributedString = NSMutableAttributedString(string: text!)
+            let attributedString = NSMutableAttributedString(string: text!)
             attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
             attributedString.addAttribute(NSFontAttributeName, value: font!, range: NSMakeRange(0, attributedString.length))
             

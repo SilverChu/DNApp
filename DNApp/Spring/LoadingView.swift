@@ -1,10 +1,24 @@
+// The MIT License (MIT)
 //
-//  LoadingView.swift
-//  DesignerNewsApp
+// Copyright (c) 2015 Meng To (meng@designcode.io)
 //
-//  Created by Meng To on 2015-01-10.
-//  Copyright (c) 2015 Meng To. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import UIKit
 
@@ -15,15 +29,16 @@ public class LoadingView: UIView {
     override public func awakeFromNib() {
         let animation = CABasicAnimation()
         animation.keyPath = "transform.rotation.z"
-        animation.fromValue = degreesToRadians(0)
-        animation.toValue = degreesToRadians(360)
+        animation.fromValue = degreesToRadians(degrees: 0)
+        animation.toValue = degreesToRadians(degrees: 360)
         animation.duration = 0.9
         animation.repeatCount = HUGE
-        indicatorView.layer.addAnimation(animation, forKey: "")
+        indicatorView.layer.add(animation, forKey: "")
     }
 
     class func designCodeLoadingView() -> UIView {
-        return NSBundle(forClass: self).loadNibNamed("LoadingView", owner: self, options: nil)[0] as UIView
+        
+        return Bundle(for: self).loadNibNamed("LoadingView", owner: self, options: nil)![0] as! UIView
     }
 }
 
@@ -35,7 +50,7 @@ public extension UIView {
 
     public func showLoading() {
 
-        if let loadingXibView = self.viewWithTag(LoadingViewConstants.Tag) {
+        if self.viewWithTag(LoadingViewConstants.Tag) != nil {
             // If loading view is already found in current view hierachy, do nothing
             return
         }
@@ -46,7 +61,7 @@ public extension UIView {
         self.addSubview(loadingXibView)
 
         loadingXibView.alpha = 0
-        spring(0.7, {
+        SpringAnimation.spring(duration: 0.7, animations: {
             loadingXibView.alpha = 1
         })
     }
@@ -56,10 +71,10 @@ public extension UIView {
         if let loadingXibView = self.viewWithTag(LoadingViewConstants.Tag) {
             loadingXibView.alpha = 1
 
-            springWithCompletion(0.7, {
+            SpringAnimation.springWithCompletion(duration: 0.7, animations: {
                 loadingXibView.alpha = 0
-                loadingXibView.transform = CGAffineTransformMakeScale(3, 3)
-            }, { (completed) -> Void in
+                loadingXibView.transform = CGAffineTransform(scaleX: 3, y: 3)
+            }, completion: { (completed) -> Void in
                 loadingXibView.removeFromSuperview()
             })
         }

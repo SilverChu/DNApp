@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Meng To (meng@designcode.io)
+// Copyright (c) 2015 James Tang (j@jamztang.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,48 +22,30 @@
 
 import UIKit
 
-@IBDesignable public class DesignableButton: SpringButton {
+public class AsyncImageView: UIImageView {
 
-    @IBInspectable public var borderColor: UIColor = UIColor.clear {
+    public var placeholderImage : UIImage?
+
+    public var url : NSURL? {
         didSet {
-            layer.borderColor = borderColor.cgColor
+            self.image = placeholderImage
+            if let urlString = url?.absoluteString {
+                ImageLoader.sharedLoader.imageForUrl(urlString: urlString) { [weak self] image, url in
+                    if let strongSelf = self {
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            if strongSelf.url?.absoluteString == url {
+                                strongSelf.image = image ?? strongSelf.placeholderImage
+                            }
+                        })
+                    }
+                }
+            }
         }
     }
-    
-    @IBInspectable public var borderWidth: CGFloat = 0 {
-        didSet {
-            layer.borderWidth = borderWidth
-        }
-    }
-    
-    @IBInspectable public var cornerRadius: CGFloat = 0 {
-        didSet {
-            layer.cornerRadius = cornerRadius
-        }
-    }
-    
-    @IBInspectable public var shadowColor: UIColor = UIColor.clear {
-        didSet {
-            layer.shadowColor = shadowColor.cgColor
-        }
-    }
-    
-    @IBInspectable public var shadowRadius: CGFloat = 0 {
-        didSet {
-            layer.shadowRadius = shadowRadius
-        }
-    }
-    
-    @IBInspectable public var shadowOpacity: CGFloat = 0 {
-        didSet {
-            layer.shadowOpacity = Float(shadowOpacity)
-        }
-    }
-    
-    @IBInspectable public var shadowOffsetY: CGFloat = 0 {
-        didSet {
-            layer.shadowOffset.height = shadowOffsetY
-        }
+
+    public func setURL(url: NSURL?, placeholderImage: UIImage?) {
+        self.placeholderImage = placeholderImage
+        self.url = url
     }
 
 }
