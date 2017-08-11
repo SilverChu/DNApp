@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoriesTableViewController: UITableViewController {
+class StoriesTableViewController: UITableViewController, StoryTableViewCellDelegate {
 
     @IBAction func menuButtonDidTouch(_ sender: Any) {
         performSegue(withIdentifier: "MenuSegue", sender: self)
@@ -35,19 +35,15 @@ class StoriesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return data.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell") as! StoryTableViewCell
+        let story = data[(indexPath as NSIndexPath).row]
+        cell.configureWithStory(story)
         
-        cell.titleLabel.text = "Learn iOS Design and Xcode."
-        cell.badgeImageView.image = UIImage(named: "badge-apple")
-        cell.avatarImageView.image = UIImage(named: "content-avatar-default")
-        cell.authorLabel.text = "Meng To, designer and coder."
-        cell.timeLabel.text = "5m"
-        cell.upvoteButton.setTitle("59", for: UIControlState.normal)
-        cell.commentButton.setTitle("32", for: UIControlState.normal)
+        cell.delegate = self
         
         return cell
     }
@@ -55,6 +51,24 @@ class StoriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "WebSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - StoryTableViewCellDelegate
+    func storyTableViewCellDidTouchUpvote(cell: StoryTableViewCell, sender: Any) {
+        // TODO: implement
+    }
+    
+    func storyTableViewCellDidTouchComment(cell: StoryTableViewCell, sender: Any) {
+        performSegue(withIdentifier: "CommentsSegue", sender: cell)
+    }
+    
+    // MARK: - Misc
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentsSegue" {
+            let toView = segue.destination as! CommentsTableViewController
+            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            toView.story = data[indexPath.row] as JSON
+        }
     }
 
 }

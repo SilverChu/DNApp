@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B04863E1F3C0A9100939066 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04863D1F3C0A9100939066 /* CommentsTableViewController.swift */; };
+		7B4600311F3C44E300749F60 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4600301F3C44E300749F60 /* SwiftyJSON.swift */; };
+		7B4600331F3C505A00749F60 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4600321F3C505A00749F60 /* CommentsTableViewCell.swift */; };
 		7B87C6A61F38565400EC69F9 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B87C6A51F38565400EC69F9 /* StoryTableViewCell.swift */; };
 		7BA656021F380B65004979B1 /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA656011F380B65004979B1 /* StoriesTableViewController.swift */; };
 		7BA656041F384E91004979B1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA656031F384E91004979B1 /* MenuViewController.swift */; };
 		7BA656061F3850F9004979B1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA656051F3850F9004979B1 /* WebViewController.swift */; };
+		7BA8C3B11F3AF13200ECD297 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8C3B01F3AF13200ECD297 /* Data.swift */; };
 		9613C0241D8CE52500A5150B /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613C0061D8CE52500A5150B /* AsyncButton.swift */; };
 		9613C0251D8CE52500A5150B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613C0071D8CE52500A5150B /* AsyncImageView.swift */; };
 		9613C0261D8CE52500A5150B /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613C0081D8CE52500A5150B /* AutoTextView.swift */; };
@@ -61,10 +65,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B04863D1F3C0A9100939066 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		7B4600301F3C44E300749F60 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7B4600321F3C505A00749F60 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		7B87C6A51F38565400EC69F9 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 		7BA656011F380B65004979B1 /* StoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
 		7BA656031F384E91004979B1 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7BA656051F3850F9004979B1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		7BA8C3B01F3AF13200ECD297 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		9613C0061D8CE52500A5150B /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		9613C0071D8CE52500A5150B /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		9613C0081D8CE52500A5150B /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -186,11 +194,15 @@
 			isa = PBXGroup;
 			children = (
 				96B71EBD1A7505D300545869 /* AppDelegate.swift */,
+				7B4600321F3C505A00749F60 /* CommentsTableViewCell.swift */,
+				7B04863D1F3C0A9100939066 /* CommentsTableViewController.swift */,
+				7BA8C3B01F3AF13200ECD297 /* Data.swift */,
 				96C4CAE81A7C9C0B00095894 /* LearnViewController.swift */,
 				96FCEE761A7A93240092ED67 /* LoginViewController.swift */,
 				7BA656031F384E91004979B1 /* MenuViewController.swift */,
 				7BA656011F380B65004979B1 /* StoriesTableViewController.swift */,
 				7B87C6A51F38565400EC69F9 /* StoryTableViewCell.swift */,
+				7B4600301F3C44E300749F60 /* SwiftyJSON.swift */,
 				7BA656051F3850F9004979B1 /* WebViewController.swift */,
 				96B71EC71A7505D300545869 /* Images.xcassets */,
 				96B71EBF1A7505D300545869 /* DNApp.xcdatamodeld */,
@@ -339,11 +351,14 @@
 				7BA656041F384E91004979B1 /* MenuViewController.swift in Sources */,
 				9613C02C1D8CE52500A5150B /* DesignableTextField.swift in Sources */,
 				9613C03E1D8CE52500A5150B /* TransitionManager.swift in Sources */,
+				7B4600311F3C44E300749F60 /* SwiftyJSON.swift in Sources */,
+				7BA8C3B11F3AF13200ECD297 /* Data.swift in Sources */,
 				9613C0371D8CE52500A5150B /* SpringAnimation.swift in Sources */,
 				9613C0241D8CE52500A5150B /* AsyncButton.swift in Sources */,
 				9613C0311D8CE52500A5150B /* KeyboardLayoutConstraint.swift in Sources */,
 				9613C0281D8CE52500A5150B /* DesignableButton.swift in Sources */,
 				96B71EBE1A7505D300545869 /* AppDelegate.swift in Sources */,
+				7B04863E1F3C0A9100939066 /* CommentsTableViewController.swift in Sources */,
 				96B71EC11A7505D300545869 /* DNApp.xcdatamodeld in Sources */,
 				9613C02E1D8CE52500A5150B /* DesignableView.swift in Sources */,
 				9613C03F1D8CE52500A5150B /* TransitionZoom.swift in Sources */,
@@ -354,6 +369,7 @@
 				9613C03A1D8CE52500A5150B /* SpringLabel.swift in Sources */,
 				9613C0341D8CE52500A5150B /* Misc.swift in Sources */,
 				9613C02B1D8CE52500A5150B /* DesignableTabBarController.swift in Sources */,
+				7B4600331F3C505A00749F60 /* CommentsTableViewCell.swift in Sources */,
 				9613C0261D8CE52500A5150B /* AutoTextView.swift in Sources */,
 				7BA656021F380B65004979B1 /* StoriesTableViewController.swift in Sources */,
 				9613C02D1D8CE52500A5150B /* DesignableTextView.swift in Sources */,
