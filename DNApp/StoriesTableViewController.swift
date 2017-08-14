@@ -9,6 +9,8 @@
 import UIKit
 
 class StoriesTableViewController: UITableViewController, StoryTableViewCellDelegate {
+    
+    let transitionManager = TransitionManager()
 
     @IBAction func menuButtonDidTouch(_ sender: Any) {
         performSegue(withIdentifier: "MenuSegue", sender: self)
@@ -49,7 +51,7 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "WebSegue", sender: self)
+        performSegue(withIdentifier: "WebSegue", sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -67,7 +69,17 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
         if segue.identifier == "CommentsSegue" {
             let toView = segue.destination as! CommentsTableViewController
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            
             toView.story = data[indexPath.row] as JSON
+        }
+        if segue.identifier == "WebSegue" {
+            let toView = segue.destination as! WebViewController
+            let indexPath = sender as! IndexPath
+            let url = data[indexPath.row]["url"].string!
+            
+            toView.url = url
+            UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.fade)
+            toView.transitioningDelegate = transitionManager
         }
     }
 
