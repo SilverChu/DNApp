@@ -8,9 +8,16 @@
 
 import UIKit
 
-class CommentsTableViewCell: UITableViewCell {
+protocol CommentsTableViewCellDelegate: class {
+    func commentsTableViewCellDidTouchUpvote(_ cell: CommentsTableViewCell)
+    func commentsTableViewCellDidTouchComment(_ cell: CommentsTableViewCell)
+}
 
-    @IBOutlet weak var avatarImageView: UIImageView!
+class CommentsTableViewCell: UITableViewCell {
+    
+    weak var delegate: CommentsTableViewCellDelegate?
+
+    @IBOutlet weak var avatarImageView: AsyncImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var upvoteButton: SpringButton!
@@ -18,9 +25,11 @@ class CommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var commentTextView: AutoTextView!
     
     @IBAction func upvoteButtonDidTouch(_ sender: Any) {
+        delegate?.commentsTableViewCellDidTouchUpvote(self)
     }
     
     @IBAction func ReplyButtonDidTouch(_ sender: Any) {
+        delegate?.commentsTableViewCellDidTouchComment(self)
     }
     
     override func awakeFromNib() {
@@ -34,9 +43,9 @@ class CommentsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureWithComment(comment: JSON) {
-        let userDisplayName = comment["user_display_name"].string!
-        let userJob = comment["user_job"].string!
+    func configureWithComment(_ comment: JSON) {
+        let userDisplayName = comment["user_display_name"].string ?? ""
+        let userJob = comment["user_job"].string ?? ""
         let createdAt = comment["created_at"].string!
         let voteCount = comment["vote_count"].int!
         let body = comment["body"].string!

@@ -53,24 +53,35 @@ class StoryTableViewCell: UITableViewCell {
     
     func configureWithStory(_ story: JSON) {
         let title = story["title"].string!
-        let badge = story["badge"].string!
-        // let userPortraitUrl = story["userPortraitUrl"] as! String
-        let userDisplayName = story["user_display_name"].string!
-        let userJob = story["user_job"].string!
+        let badge = story["badge"].string ?? ""
+        // let userPortraitUrl = story["userPortraitUrl"].string ?? ""
+        // let userDisplayName = story["user_display_name"].string!
+        // let userJob = story["user_job"].string!
         let createdAt = story["created_at"].string!
         let voteCount = story["vote_count"].int!
         let commentCount = story["comment_count"].int!
-        let comment = story["comment"].string!
+        let comment = story["comment"].string
+        // let commentHTML = story["comment_html"].string ?? ""
         
         titleLabel.text = title
         badgeImageView.image = UIImage(named: "badge-" + badge)
         avatarImageView.image = UIImage(named: "content-avatar-default")
-        authorLabel.text = userDisplayName + ", " + userJob
+        // authorLabel.text = userDisplayName + ", " + userJob
         timeLabel.text = timeAgoSinceDate(date: dateFromString(date: createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZ"), numericDates: true)
         upvoteButton.setTitle(String(voteCount), for: UIControlState.normal)
         commentButton.setTitle(String(commentCount), for: UIControlState.normal)
         if let commentTextView = commentTextView {
             commentTextView.text = comment
+            // commentTextView.attributedText = htmlToAttributedString(text: commentHTML + "<style>*{font-family:\"Avenir Next\";font-size:16px;line-height:20px}img{max-width:300px}</style>")
+        }
+        
+        let storyId = story["id"].string!
+        if LocalStore.isStoryUpvoted(storyId) {
+            upvoteButton.setImage(UIImage(named: "icon-upvote-active"), for: .normal)
+            upvoteButton.setTitle(String(voteCount + 1), for: .normal)
+        } else {
+            upvoteButton.setImage(UIImage(named: "icon-upvote"), for: .normal)
+            upvoteButton.setTitle(String(voteCount), for: .normal)
         }
     }
 
